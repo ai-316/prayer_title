@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  --font-body: "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Gowun Batang", "Noto Sans KR", serif;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #eaf6f4;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* 버튼 */
+.btn-teal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 1rem;
+  padding: 0.95rem 1.25rem;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(135deg, #3fb5a6 0%, #14867c 100%);
+  box-shadow: 0 12px 26px -10px rgba(20, 134, 124, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: transform 0.15s ease, filter 0.2s ease;
+}
+.btn-teal:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+.btn-teal:active:not(:disabled) {
+  transform: scale(0.97);
+}
+.btn-teal:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* 등장 */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-rise {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 바텀시트 */
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.sheet-up {
+  animation: sheet-up 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 토스트 */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.toast-in {
+  animation: toast-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* 떠다니는 입자 */
+@keyframes mote-float {
+  0% {
+    transform: translateY(105vh) translateX(0);
+  }
+  100% {
+    transform: translateY(-10vh) translateX(var(--sway, 18px));
+  }
+}
+.mote {
+  top: 0;
+  animation: mote-float linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mote {
+    animation: none !important;
+  }
+}
